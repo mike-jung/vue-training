@@ -1,0 +1,59 @@
+<!-- 
+  -- 반복문 사용주기
+  -- v-for
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex01_04</title>
+  </head>
+  <body>
+    <h3>안녕 Vue</h3>
+    <div id="app">
+      <p>이름 목록</p>
+      <ul>
+        <li v-for="name in names">{{ name }}</li>
+      </ul>
+
+      <p>친구 목록</p>
+      <div v-for="(friend, index) in friends">
+        <h3>#{{index}} : {{ friend.name }} - <small>{{ friend.mobile }}</small></h3>
+        <span v-for="star in friend.rating">*</span>
+        <div v-if="friend.rating > 4">정말 좋은 친구입니다</div>
+      </div>
+
+      <button @click="addName">이름 추가하기</button>
+      <button @click="addFriend">친구 추가하기</button>
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          names: [
+            '김준수',
+            '한혜진',
+            '박연준',
+            '홍수종'
+          ],
+          friends: [
+            { name: '김준수', mobile: '010-1000-1000', rating: 1 },
+            { name: '한혜진', mobile: '010-2000-2000', rating: 5 },
+            { name: '박연준', mobile: '010-3000-3000', rating: 3 },
+            { name: '홍수종', mobile: '010-4000-4000', rating: 2 }
+          ]
+        },
+        methods: {
+          addName() {
+            this.names.push('김하늘');
+          },
+          addFriend() {
+            this.friends.push({name:'김하늘', age:24, mobile:'010-5000-5000'})
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

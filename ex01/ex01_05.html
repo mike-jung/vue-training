@@ -1,0 +1,60 @@
+<!-- 
+  -- 컴포넌트 사용하기
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex01_05</title>
+  </head>
+  <body>
+    <h3>안녕 Vue</h3>
+    <div id="app">
+      <alert-button></alert-button>
+
+      <name-list></name-list>
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      Vue.component('alert-button', {
+        template: `<button @click="showAlert">대화상자 띄우기</button>`,
+        methods: {
+          showAlert() {
+            alert('멋져요 😎');
+          }
+        }
+      });
+
+      Vue.component('name-list', {
+        template: `
+          <div>
+            <p>이름 목록</p>
+            <ul>
+              <li v-for="name in names">{{ name }}</li>
+            </ul>
+            <button @click="addName">이름 추가하기</button>
+          </div>`,
+        data() {
+          return {
+            names: [
+              '김준수',
+              '한혜진',
+              '박연준',
+              '홍수종'
+            ]
+          }
+        },
+        methods: {
+          addName() {
+            this.names.push('김하늘');
+          }
+        }
+      });
+
+      const app = new Vue({
+        el: '#app'
+      })
+    </script>
+  </body>
+</html>

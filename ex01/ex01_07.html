@@ -1,0 +1,36 @@
+<!-- 
+  -- v-bind로 속성 바인딩하기
+  -- Vue의 데이터를 태그의 속성과 연결하고 싶은 경우
+  -- 디렉티브(Directive) : 태그에 추가할 수 있으며, v-로 시작함
+  -- v-bind:<<속성>> 은 줄여서 :<<속성>>의 약어 형태로 사용할 수 있음 
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex01_07</title>
+  </head>
+  <body>
+    <h3>안녕 Vue</h3>
+    <div id="app">
+      <a href="http://www.naver.com">링크1</a>
+      <br>
+      <a v-bind:href="link">링크2</a>
+      <br>
+      <a :href="link">링크2</a>
+
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        
+      const app = new Vue({
+        el: '#app',
+        data: {
+          link: 'http://www.naver.com'
+        }
+      })
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!-- 
+  -- 컴포넌트 사용하기 2
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex01_05</title>
+  </head>
+  <body>
+    <h3>안녕 Vue</h3>
+    <div id="app">
+      <name-list></name-list>
+
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+       
+      Vue.component('name-list', {
+        template: `
+          <div>
+            <p>친구 목록</p>
+            <div v-for="(friend, index) in friends">
+              <h3>#{{index}} : {{ friend.name }} - <small>{{ friend.mobile }}</small></h3>
+              <span v-for="star in friend.rating">*</span>
+              <div v-if="friend.rating > 4">정말 좋은 친구입니다</div>
+            </div>
+            <button @click="addFriend">친구 추가하기</button>
+          </div>`,
+        data() {
+          return {
+            friends: [
+              { name: '김준수', mobile: '010-1000-1000', rating: 1 },
+              { name: '한혜진', mobile: '010-2000-2000', rating: 5 },
+              { name: '박연준', mobile: '010-3000-3000', rating: 3 },
+              { name: '홍수종', mobile: '010-4000-4000', rating: 2 }
+            ]
+          }
+        },
+        methods: {
+          addFriend() {
+            this.friends.push({name:'김하늘', age:24, mobile:'010-5000-5000'})
+          }
+        }
+      });
+
+      const app = new Vue({
+        el: '#app'
+      })
+    </script>
+  </body>
+</html>

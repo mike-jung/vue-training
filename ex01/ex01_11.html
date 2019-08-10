@@ -1,0 +1,72 @@
+<!-- 
+  -- 단순한 라우터 사용하기
+  -- 단일 페이지 어플리케이션(SPA)에서 가장 먼저 처리해야 할 것이 바로 라우팅임. 
+  -- 서버에서 라우팅은 URI에 따라 해당하는 정적파일을 내려주는 방식임.
+  -- SPA에서는 이를 브라우저에서 구현해야 함.
+  -- 직접 구현 방법 : 요청 URI에 따라 브라우저에서 DOM을 변경하는 방식.
+  --
+  -- parcel-bundler를 이용해 간단하게 웹서버 안에서 실행
+  -- 1. 패키지 초기화
+  --    $ npm init -y
+  --
+  -- 2. parcel bundler 설치
+  --    $ npm install -g parcel-bundler
+  --  
+  -- 3. parcel을 이용해 빌드
+  --    $ parcel ex01_11.html
+  --
+  --  dist 폴더 만들어지고 필요한 모듈들과 파일들을 생성함
+  --  http://localhost:1234에 임시 서버 실행함
+  --
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex01_11</title>
+  </head>
+  <body>
+    <h3>안녕 Vue</h3>
+    <div id="app">
+      
+      <input type="text" v-model="input1">
+      <p>{{input1}}</p>
+ 
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+
+      // 세 개의 화면을 만듬  
+      const NotFound = { template: '<p>Page not found</p>' }
+      const Home = { template: '<p>Home page</p>' }
+      const About = { template: '<p>About page</p>' }
+
+      // 경로와 컴포넌트가 들어있는 설정 객체를 만듬
+      const routes = {
+        '/': Home,
+        '/about': About
+      }
+
+      // 뷰 인스턴스에는 render 속성이 함수로 들어 있음. 
+      // createElement와 같은 DOM 객체 생성 함수를 h라는 이름의 파라미터로 전달받는 함수이며, 이 함수를 실행하면 DOM 객체가 주입됨.
+      // 함수 h()를 실행하면서 위에서 만든 컴포넌트 객체를 넘겨주면 해당 컴포넌트를 화면에 그리게 됨.
+      // 요청 경로에 따라 render() 함수가 동적으로 동작하도록 ViewComponent라는 이름의 동적 함수를 만들고,
+      // 그 안에서 컴포넌트 경로에 따라 해당 컴포넌트를 반환하도록 함
+      // ViewComponent 함수에서 경로를 참조할 때는 window.location 객체에 들어있는 경로를 참조하도록 함
+      new Vue({
+        el: '#app',
+        data: {
+          currentRoute: window.location.pathname
+        },
+        computed: {
+          ViewComponent () {
+            return routes[this.currentRoute] || NotFound
+          }
+        },
+        render (h) { return h(this.ViewComponent) }
+      })
+
+    </script>
+  </body>
+</html>

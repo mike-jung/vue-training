@@ -1,0 +1,38 @@
+<!-- 
+  -- Directive에 JS 코드 넣기 
+  -- <div id="app"></div> 태그 안쪽에 <button> 태그를 추가해야 함 - 바깥에는 안됨
+  -- v-on:click 은 줄여서 @click 의 약어 형태로 사용할 수 있음 
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex01_02</title>
+  </head>
+  <body>
+    <h3>안녕 Vue</h3>
+    <div id="app">
+      <p>{{ message }}</p>
+
+      <button v-on:click="message = '안녕하세요'">바꾸기</button>
+      <button @click="message = '반갑습니다'">바꾸기2</button>
+      <button @click="show">보여주기</button>
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          message: '홍길동'
+        },
+        methods: {
+          show() {
+            const newMessage = '새로운 메시지입니다';
+            this.message = newMessage;
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

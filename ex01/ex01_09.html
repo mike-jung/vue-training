@@ -1,0 +1,43 @@
+<!-- 
+  -- v-model을 이용한 양방향 데이터 바인딩
+  -- v-model은 v-on:input과 v-bind:value를 합쳐놓은 것과 같음
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex01_07</title>
+  </head>
+  <body>
+    <h3>안녕 Vue</h3>
+    <div id="app">
+      
+      <input type="text" v-model="input1">
+      <p>{{input1}}</p>
+
+      <input type="text" v-on:input="setInput2($event.target.value)" v-bind:value="input2">
+      <p>{{input2}}</p>
+
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        
+      const app = new Vue({
+        el: '#app',
+        data() {
+          return {
+            input1: '홍길동',
+            input2: '김민주'
+          }
+        },
+        methods: {
+          setInput2(value) {
+            this.input2 = value;
+          }
+        }
+      })
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!-- 
+  -- watcher 사용하기
+  -- 소문자로 입력해도 대문자로 바뀌도록 만들어줌
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex01_10</title>
+  </head>
+  <body>
+    <h3>안녕 Vue</h3>
+    <div id="app">
+      
+      <input type="text" v-model="input1">
+      <p>{{input1}}</p>
+ 
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        
+      const app = new Vue({
+        el: '#app',
+        data() {
+          return {
+            input1: ''
+          }
+        },
+        watch: {
+          input1(newValue, oldValue) {
+            if (!newValue) return
+
+            this.input1 = newValue.toUpperCase();
+          }
+        }
+      })
+
+    </script>
+  </body>
+</html>

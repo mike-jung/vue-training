@@ -1,0 +1,30 @@
+<!-- 
+  -- v-html로 html 코드 추가하기
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ex01_07</title>
+  </head>
+  <body>
+    <h3>안녕 Vue</h3>
+    <div id="app">
+      
+      <div v-html="message"></div>
+
+    </div>
+    
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script>
+        
+      const app = new Vue({
+        el: '#app',
+        data: {
+          message: '<p style="color:red;">추가된 글자입니다</p>'
+        }
+      })
+
+    </script>
+  </body>
+</html>
