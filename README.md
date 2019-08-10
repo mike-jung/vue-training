@@ -36,7 +36,8 @@ $ npm start
 ```
 
 MySQL database needs to be installed and posts table in test database to be created.
-The posts table has three columns: id (int primary key autoincrement), title (varchar 50), body (text)
+- The posts table has three columns: id (int primary key autoincrement), title (varchar 50), body (text).
+
 Test url for example Vue.js pages are as follows:
 
   * http://localhost:7001/post/
