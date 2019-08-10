@@ -1,6 +1,6 @@
 # vue-training
 
-This is a example project for vue.js tutorial
+This is an example project for vue.js tutorial
 
 - This example uses vue.js and bootstrap for frontend
 - Node.js and MySQL database are used for backend (node-web-starter template project is used)
