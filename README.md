@@ -42,3 +42,7 @@ Test url for example Vue.js pages are as follows:
 
   * http://localhost:7001/post/
 
+
+
+## License
+MIT © Mike Jung
