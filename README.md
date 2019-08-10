@@ -9,11 +9,11 @@ This is an example project for vue.js tutorial
 ## Application Structure
 
   * `ex01/`
-    * ... - Basic examples for Vue.js usage.
+    * ... - Folder containing basic examples for Vue.js usage.
   * `ex02_01/`
-    * ... - Vue.js frontend project made using Vue CLI command.
+    * ... - Folder for Vue.js frontend project made using Vue CLI command.
   * `server02_01/`
-    * ... - Node.js web server made using node-web-starter project.
+    * ... - Folder for Node.js web server made using node-web-starter project.
     
 
 ## Getting Started
